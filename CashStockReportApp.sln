@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33723.286
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CashStockReportApp.Domain", "CashStockReportApp.Domain\CashStockReportApp.Domain.csproj", "{6A98C559-A559-4AAC-86E3-E508E7B4F51A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CashStockReportApp.Infrastructure", "CashStockReportApp.Infrastructure\CashStockReportApp.Infrastructure.csproj", "{9E4F4C0D-5D80-4591-8962-D6CECC0DA8E5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CashStockReportApp.Infrastructure.EFCore", "CashStockReportApp.Infrastructure.EFCore\CashStockReportApp.Infrastructure.EFCore.csproj", "{732844DC-BBC8-4F24-BE7F-E52D8D5881BB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CashStockReportApp.App", "CashStockReportApp.App\CashStockReportApp.App.csproj", "{03FD4EFD-1038-464D-A96C-81E61DD3DDC9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CashStockReportApp.Presentation.WinForm", "CashStockReportApp.Presentation.WinForm\CashStockReportApp.Presentation.WinForm.csproj", "{351D4A2E-6835-4355-96E8-75598F48802E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6A98C559-A559-4AAC-86E3-E508E7B4F51A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A98C559-A559-4AAC-86E3-E508E7B4F51A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A98C559-A559-4AAC-86E3-E508E7B4F51A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A98C559-A559-4AAC-86E3-E508E7B4F51A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E4F4C0D-5D80-4591-8962-D6CECC0DA8E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E4F4C0D-5D80-4591-8962-D6CECC0DA8E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E4F4C0D-5D80-4591-8962-D6CECC0DA8E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E4F4C0D-5D80-4591-8962-D6CECC0DA8E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{732844DC-BBC8-4F24-BE7F-E52D8D5881BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{732844DC-BBC8-4F24-BE7F-E52D8D5881BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{732844DC-BBC8-4F24-BE7F-E52D8D5881BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{732844DC-BBC8-4F24-BE7F-E52D8D5881BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03FD4EFD-1038-464D-A96C-81E61DD3DDC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03FD4EFD-1038-464D-A96C-81E61DD3DDC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03FD4EFD-1038-464D-A96C-81E61DD3DDC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03FD4EFD-1038-464D-A96C-81E61DD3DDC9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{351D4A2E-6835-4355-96E8-75598F48802E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{351D4A2E-6835-4355-96E8-75598F48802E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{351D4A2E-6835-4355-96E8-75598F48802E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{351D4A2E-6835-4355-96E8-75598F48802E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {678A78EF-D5B9-4CE4-9777-0E6B1B867B71}
+	EndGlobalSection
+EndGlobal
