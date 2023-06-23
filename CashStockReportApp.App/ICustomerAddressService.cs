@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CashStockReportApp.App
 {
-    internal class ICustomerAddressService
+    public interface ICustomerAddressService
     {
     }
 }

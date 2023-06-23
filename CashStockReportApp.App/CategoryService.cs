@@ -25,7 +25,7 @@ namespace CashStockReportApp.App
             if (string.IsNullOrEmpty(name))
                 throw new ArgumentNullException("Lütfen kategori adını boş bırakmayınız!!");
 
-            var oldCategory = _categoryRepository.GetList().FirstOrDefault(c = c => c.Name == name);
+            var oldCategory = _categoryRepository.GetList().FirstOrDefault( c => c.CategoryName == name);
             if (oldCategory != null)
                 return;
 
@@ -34,6 +34,19 @@ namespace CashStockReportApp.App
             _categoryRepository.Add(category);
             
 
+        }
+
+        public bool Delete(int catId)
+        {
+            return _categoryRepository.Remove(catId);
+        }
+
+        public Category Update(int catId, string newCategoryName)
+        {
+            var category = new Category();
+            category.Id = catId;
+            category.CategoryName=newCategoryName;
+            return _categoryRepository.Update(catId, category);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CashStockReportApp.Domain.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,5 +11,8 @@ namespace CashStockReportApp.App
     {
         void Create(string name);
         
+        bool Delete(int catId);
+
+        Category Update(int catId, string newCategoryName);
     }
 }

@@ -12,6 +12,13 @@ namespace CashStockReportApp.App
 {
     public class CashierService : ICashierService
     {
+        private readonly IRepository<Cashier> _cashierRepository;
+
+        public CashierService()
+            {
+                _cashierRepository = IOCContainer.Resolve<IRepository<Cashier>>();
+            }
+
         public void Create(string name, string surname, string gender)
         {
             var repo = IOCContainer.Resolve<IRepository<Cashier>>();
