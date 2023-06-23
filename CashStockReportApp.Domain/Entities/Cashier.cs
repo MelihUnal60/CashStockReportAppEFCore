@@ -17,7 +17,7 @@ namespace CashStockReportApp.Domain.Entities
 
         public ICollection <Invoice> Invoices { get; set; }
 
-        public DateTime HireDate { get; set; }
+        public DateTime? HireDate { get; set; }
 
         public DateTime? FireTime { get; set;}
     }

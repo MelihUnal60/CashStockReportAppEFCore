@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CashStockReportApp.App\CashStockReportApp.App.csproj" />
     <ProjectReference Include="..\CashStockReportApp.Domain\CashStockReportApp.Domain.csproj" />
     <ProjectReference Include="..\CashStockReportApp.Infrastructure.EFCore\CashStockReportApp.Infrastructure.EFCore.csproj" />
   </ItemGroup>

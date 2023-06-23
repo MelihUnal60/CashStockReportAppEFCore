@@ -6,4 +6,10 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\CashStockReportApp.Domain\CashStockReportApp.Domain.csproj" />
+    <ProjectReference Include="..\CashStockReportApp.Infrastructure.EFCore\CashStockReportApp.Infrastructure.EFCore.csproj" />
+    <ProjectReference Include="..\CashStockReportApp.Infrastructure\CashStockReportApp.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>
