@@ -14,7 +14,7 @@ namespace CashStockReportApp.Infrastructure
 
         public static T Resolve<T> ()
         {
-            return (T)container[typeof(T)]();
+            return (T)container[typeof(T)]();   
         }
 
         public static void Register<T>(Func<object> func)

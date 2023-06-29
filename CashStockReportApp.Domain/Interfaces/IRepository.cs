@@ -12,12 +12,8 @@ namespace CashStockReportApp.Domain.Interfaces
     {
         T Add (T entity);
 
-        bool Remove (int id);
-
-        T GetById (int id); //ID'ye göre istenilen tipi döner
-
-        ICollection<T> GetList (Func<T,bool> expression = null); //istersek herşeyi, istersek link ile filtrelenmiş data döner.
-
+        bool Remove (T entity);
+        bool Remove(int catId);
         T Update (int id,T entity);
 
     }

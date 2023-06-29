@@ -1,3 +1,5 @@
+using CashStockReportApp.App;
+
 namespace CashStockReportApp.Presentation.WinForm
 {
     internal static class Program
@@ -11,6 +13,7 @@ namespace CashStockReportApp.Presentation.WinForm
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
+            AppServiceConfigurations.RegisterAllService();
             Application.Run(new Form1());
         }
     }

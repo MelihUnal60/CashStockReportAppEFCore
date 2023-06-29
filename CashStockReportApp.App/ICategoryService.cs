@@ -11,8 +11,8 @@ namespace CashStockReportApp.App
     {
         void Create(string name);
         
-        bool Delete(int catId);
+        void Delete(int id);
 
-        Category Update(int catId, string newCategoryName);
+        void Update(int catId, string newCategoryName);
     }
 }

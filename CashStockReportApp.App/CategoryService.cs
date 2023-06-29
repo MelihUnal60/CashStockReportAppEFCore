@@ -13,40 +13,45 @@ namespace CashStockReportApp.App
 {
     public class CategoryService : ICategoryService
     {
-        private readonly IRepository<Category> _categoryRepository;
+        
+
+        private readonly IRepository<Category> _repositoryCategory;
 
         public CategoryService()
         {
-            _categoryRepository = IOCContainer.Resolve<IRepository<Category>>();
+            _repositoryCategory = IOCContainer.Resolve<IRepository<Category>>();
         }
 
         public void Create(string name)
         {
             if (string.IsNullOrEmpty(name))
                 throw new ArgumentNullException("Lütfen kategori adını boş bırakmayınız!!");
-
-            var oldCategory = _categoryRepository.GetList().FirstOrDefault( c => c.CategoryName == name);
-            if (oldCategory != null)
-                return;
-
             Category category = new Category();
             category.CategoryName = name;
-            _categoryRepository.Add(category);
+
+            _repositoryCategory.Add(category);
             
 
         }
 
         public bool Delete(int catId)
         {
-            return _categoryRepository.Remove(catId);
+            
+            return _repositoryCategory.Remove(catId);
+            
         }
 
-        public Category Update(int catId, string newCategoryName)
+        public void Update(int catId, string newCategoryName)
         {
             var category = new Category();
             category.Id = catId;
             category.CategoryName=newCategoryName;
-            return _categoryRepository.Update(catId, category);
+            _repositoryCategory.Add(category);
+        }
+
+        void ICategoryService.Delete(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

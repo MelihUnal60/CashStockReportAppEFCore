@@ -24,20 +24,17 @@ namespace CashStockReportApp.App
             IOCContainer.Register<IRepository<Customer>>(() => new EFCoreRepository<Customer>());
             IOCContainer.Register<ICustomerService>(() => new CustomerService());
             IOCContainer.Register<IRepository<Order>>(() => new EFCoreRepository<Order>());
-            IOCContainer.Register<ICashierService>(() => new CashierService());
+            IOCContainer.Register<IOrderService>(() => new OrderService());
             IOCContainer.Register<IRepository<Invoice>>(() => new EFCoreRepository<Invoice>());
-            IOCContainer.Register<ICashierService>(() => new CashierService());
+            IOCContainer.Register<IInvoiceService>(() => new InvoiceService());
             IOCContainer.Register<IRepository<Log>>(() => new EFCoreRepository<Log>());
-            IOCContainer.Register<ICashierService>(() => new Log());
+            IOCContainer.Register<ILogService>(() => new LogService());
             IOCContainer.Register<IOrderDetailService>(() =>  new OrderDetailService());
             IOCContainer.Register<IRepository<CustomerAddress>>(() => new EFCoreRepository<CustomerAddress>());
             IOCContainer.Register<ICustomerAddressService>(() => new CustomerAddressService());
 
         }
 
-        public static IRepository<Category> ServiceMethod()
-        {
-            return new EFCoreRepository<Category>();
-        }
+       
     }
 }

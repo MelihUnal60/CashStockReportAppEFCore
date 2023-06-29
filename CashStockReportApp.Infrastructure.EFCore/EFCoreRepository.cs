@@ -1,6 +1,7 @@
 ﻿using CashStockReportApp.Domain.Entities;
 using CashStockReportApp.Domain.Entities.Base;
 using CashStockReportApp.Domain.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
@@ -13,39 +14,28 @@ namespace CashStockReportApp.Infrastructure.EFCore
     public class EFCoreRepository<T> : IRepository<T> where T : BaseEntity
     {
 
-        private static List<T> list = new List<T>();
+        APIDbContext context = new APIDbContext();
 
         
 
         public T Add(T entity)
         {
-            list.Add(entity);
+            context.Add(entity);
+            context.SaveChanges();
             return entity;
         }
 
-        public T GetById(int id)
-        {
-            
-            var entity = list.FirstOrDefault(x => x.Id == id);
-            return entity;
-        }
-
-        public ICollection<T> GetList(Func<T, bool> expression = null)
-        {
-           
-
-            return expression == null ? list : list.Where(expression).ToList();
-        }
+        
 
         public bool Remove(int id)
         {
-           
-            var deletedEntity = list.FirstOrDefault((x) => x.Id == id);
-            if (deletedEntity != null) 
-            {
-                list.Remove(deletedEntity);
-            }
+            context.Remove(id);
             return false;
+        }
+
+        public bool Remove(T entity)
+        {
+            throw new NotImplementedException();
         }
 
         public T Update(int id, T entity)
@@ -53,11 +43,8 @@ namespace CashStockReportApp.Infrastructure.EFCore
            if(id!=entity.Id)
                 throw new ArgumentException("ID değerleri uyuşmuyor!!");
 
-           var updated = list.FirstOrDefault((x) => x.Id == id);
-            if (updated == null)
-                throw new ArgumentException("Varlık bulunamadı!!");
-            list.Remove(updated);
-            list.Add(entity);
+           
+            context.Update(entity);
             return entity;
         }
     }
