@@ -17,6 +17,8 @@ namespace CashStockReportApp.Presentation.WinForm
         ICategoryService categoryService = IOCContainer.Resolve<ICategoryService>();
         IProductService productService = IOCContainer.Resolve<IProductService>();
         ICashierService cashierService = IOCContainer.Resolve<ICashierService>();
+        ICustomerService customerService = IOCContainer.Resolve<ICustomerService>();
+        IOrderService orderService = IOCContainer.Resolve<IOrderService>();
 
         APIDbContext context = new APIDbContext();
 
@@ -81,6 +83,11 @@ namespace CashStockReportApp.Presentation.WinForm
 
         }
 
-
+        private void button1_Click(object sender, EventArgs e) //Sipariþ ve müþteri tanýmlama
+        {
+            orderService.Create(Convert.ToDecimal(txtOrdTotalPrice.Text), txtOrdShip.Text, txtOrdCity.Text);
+            customerService.Create(txtCustomerName.Text, txtCustomerSurname.Text, txtCustomerPhone.Text);
+            context.SaveChanges();
+        }
     }
 }

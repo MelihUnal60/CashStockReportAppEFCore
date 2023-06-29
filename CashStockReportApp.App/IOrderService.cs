@@ -8,5 +8,6 @@ namespace CashStockReportApp.App
 {
     public interface IOrderService
     {
+        void Create(decimal price, string shipCompany, string city);
     }
 }
