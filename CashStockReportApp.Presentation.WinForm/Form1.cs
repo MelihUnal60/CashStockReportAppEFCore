@@ -1,5 +1,6 @@
 using CashStockReportApp.App;
 using CashStockReportApp.Domain.Entities;
+using CashStockReportApp.Domain.UIViewModels;
 using CashStockReportApp.Infrastructure;
 using CashStockReportApp.Infrastructure.EFCore;
 using Microsoft.EntityFrameworkCore;
@@ -15,6 +16,7 @@ namespace CashStockReportApp.Presentation.WinForm
 
         ICategoryService categoryService = IOCContainer.Resolve<ICategoryService>();
         IProductService productService = IOCContainer.Resolve<IProductService>();
+        ICashierService cashierService = IOCContainer.Resolve<ICashierService>();
 
         APIDbContext context = new APIDbContext();
 
@@ -27,7 +29,18 @@ namespace CashStockReportApp.Presentation.WinForm
 
         private void GetProductData()
         {
-            grdPrd.DataSource = context.Products.ToList();
+            var products = from p in context.Products.AsNoTracking().Include(p => p.Category)
+                           select new ProductGridVM
+                           {
+                               Id = p.Id,
+                               Name = p.Name,
+                               CategoryId = p.Category.Id,
+                               CategoryName = p.Category.CategoryName,
+                               Amount = p.Stock,
+                               Price = p.Price
+                           };
+            grdPrd.DataSource = products.ToList();
+
             context.SaveChanges();
         }
 
@@ -50,11 +63,24 @@ namespace CashStockReportApp.Presentation.WinForm
         private void btnAddPrd_Click(object sender, EventArgs e)
         {
             cbbPrdCtg.ValueMember = nameof(Category.Id);
-            int categoryId = Convert.ToInt32(cbbPrdCtg.SelectedValue); 
+            int categoryId = Convert.ToInt32(cbbPrdCtg.SelectedValue);
             productService.Create(txtPrdName.Text, Convert.ToInt32(txtPrdAmt.Text),
                 categoryId, Convert.ToDecimal(txtPrdPrice.Text));
             context.SaveChanges();
             GetProductData();
+            txtPrdAmt.Text = "";
+            txtPrdName.Text = "";
+            txtPrdPrice.Text = "";
         }
+
+        private void btnAddCashier_Click(object sender, EventArgs e)
+        {
+            cashierService.Create(txtCashierName.Text, txtCashierSurname.Text,
+                txtCashierGender.Text, Convert.ToDateTime(txtCashierHDate.Text));
+            context.SaveChanges();
+
+        }
+
+
     }
 }

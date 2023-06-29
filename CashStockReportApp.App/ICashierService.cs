@@ -11,7 +11,7 @@ namespace CashStockReportApp.App
 {
     public interface ICashierService
     {
-        void Create(string name, string surname, string gender);
+        void Create(string name, string surname, string gender,DateTime date);
        
     }
 }

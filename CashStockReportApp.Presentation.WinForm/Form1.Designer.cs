@@ -37,10 +37,10 @@
             label4 = new Label();
             cbbPrdCtg = new ComboBox();
             btnAddPrd = new Button();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
-            textBox3 = new TextBox();
-            textBox4 = new TextBox();
+            txtCashierName = new TextBox();
+            txtCashierGender = new TextBox();
+            txtCashierSurname = new TextBox();
+            txtCashierHDate = new TextBox();
             btnAddCashier = new Button();
             label5 = new Label();
             label6 = new Label();
@@ -156,33 +156,33 @@
             btnAddPrd.UseVisualStyleBackColor = true;
             btnAddPrd.Click += btnAddPrd_Click;
             // 
-            // textBox1
+            // txtCashierName
             // 
-            textBox1.Location = new Point(655, 35);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(156, 27);
-            textBox1.TabIndex = 9;
+            txtCashierName.Location = new Point(655, 35);
+            txtCashierName.Name = "txtCashierName";
+            txtCashierName.Size = new Size(156, 27);
+            txtCashierName.TabIndex = 9;
             // 
-            // textBox2
+            // txtCashierGender
             // 
-            textBox2.Location = new Point(655, 132);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(156, 27);
-            textBox2.TabIndex = 10;
+            txtCashierGender.Location = new Point(655, 132);
+            txtCashierGender.Name = "txtCashierGender";
+            txtCashierGender.Size = new Size(156, 27);
+            txtCashierGender.TabIndex = 10;
             // 
-            // textBox3
+            // txtCashierSurname
             // 
-            textBox3.Location = new Point(655, 82);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(156, 27);
-            textBox3.TabIndex = 11;
+            txtCashierSurname.Location = new Point(655, 82);
+            txtCashierSurname.Name = "txtCashierSurname";
+            txtCashierSurname.Size = new Size(156, 27);
+            txtCashierSurname.TabIndex = 11;
             // 
-            // textBox4
+            // txtCashierHDate
             // 
-            textBox4.Location = new Point(655, 186);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(156, 27);
-            textBox4.TabIndex = 12;
+            txtCashierHDate.Location = new Point(655, 186);
+            txtCashierHDate.Name = "txtCashierHDate";
+            txtCashierHDate.Size = new Size(156, 27);
+            txtCashierHDate.TabIndex = 12;
             // 
             // btnAddCashier
             // 
@@ -192,6 +192,7 @@
             btnAddCashier.TabIndex = 13;
             btnAddCashier.Text = "Kasiyer Tanıt";
             btnAddCashier.UseVisualStyleBackColor = true;
+            btnAddCashier.Click += btnAddCashier_Click;
             // 
             // label5
             // 
@@ -521,10 +522,10 @@
             Controls.Add(label6);
             Controls.Add(label5);
             Controls.Add(btnAddCashier);
-            Controls.Add(textBox4);
-            Controls.Add(textBox3);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
+            Controls.Add(txtCashierHDate);
+            Controls.Add(txtCashierSurname);
+            Controls.Add(txtCashierGender);
+            Controls.Add(txtCashierName);
             Controls.Add(btnAddPrd);
             Controls.Add(cbbPrdCtg);
             Controls.Add(label4);
@@ -555,10 +556,10 @@
         private Label label4;
         private ComboBox cbbPrdCtg;
         private Button btnAddPrd;
-        private TextBox textBox1;
-        private TextBox textBox2;
-        private TextBox textBox3;
-        private TextBox textBox4;
+        private TextBox txtCashierName;
+        private TextBox txtCashierGender;
+        private TextBox txtCashierSurname;
+        private TextBox txtCashierHDate;
         private Button btnAddCashier;
         private Label label5;
         private Label label6;

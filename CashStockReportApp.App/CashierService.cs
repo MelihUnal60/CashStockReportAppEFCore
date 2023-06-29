@@ -19,18 +19,18 @@ namespace CashStockReportApp.App
                 _cashierRepository = IOCContainer.Resolve<IRepository<Cashier>>();
             }
 
-        public void Create(string name, string surname, string gender)
+        public void Create(string name, string surname, string gender,DateTime date)
         {
-            var repo = IOCContainer.Resolve<IRepository<Cashier>>();
+            
 
             Cashier cashier = new Cashier()
             {
                 CashierName = name,
                 CashierSurname = surname,
                 Gender = gender,
-                HireDate = DateTime.Now
+                HireDate = date,
             };
-            repo.Add(cashier);
+            _cashierRepository.Add(cashier);
         }
     }
 }

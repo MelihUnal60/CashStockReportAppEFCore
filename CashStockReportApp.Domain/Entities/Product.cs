@@ -14,13 +14,13 @@ namespace CashStockReportApp.Domain.Entities
         //[Required(AllowEmptyStrings = false)]
         public string Name { get; set; }
 
-        public int? Stock { get; set; }
+        public int Stock { get; set; }
 
         //[ForeingKey("Category")] Data annotation ile yapsaydık bu şekilde yapacaktık fakat mimari yapıya aykırı
 
         public int? CategoryId { get; set; }
 
-        public decimal? Price { get; set; }
+        public decimal Price { get; set; }
 
         public Category Category { get; set; }  //Navigation property
 
