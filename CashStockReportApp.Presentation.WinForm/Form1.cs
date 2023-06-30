@@ -26,7 +26,9 @@ namespace CashStockReportApp.Presentation.WinForm
         {
             GetProductData();
             FillCtgCbb();
-
+            FillOrderNumCbb();
+            FillOrderPrdCbb();
+            FillOrderCustomerCbb();
         }
 
         private void GetProductData()
@@ -88,6 +90,31 @@ namespace CashStockReportApp.Presentation.WinForm
             orderService.Create(Convert.ToDecimal(txtOrdTotalPrice.Text), txtOrdShip.Text, txtOrdCity.Text);
             customerService.Create(txtCustomerName.Text, txtCustomerSurname.Text, txtCustomerPhone.Text);
             context.SaveChanges();
+        }
+
+        private void FillOrderNumCbb()
+        {
+            var savedOrders = context.Orders.AsNoTracking().ToList();
+            cbbOrderId.DataSource = savedOrders;
+            cbbOrderId.DisplayMember = nameof(Order.Id);
+            cbbOrderId.ValueMember = nameof(Order.Id);
+        }
+
+        private void FillOrderPrdCbb()
+        {
+            var productsForOrderDetail = context.Products.AsNoTracking().ToList();
+            cbbOrderPrd.DataSource = productsForOrderDetail;
+            cbbOrderPrd.DisplayMember = nameof(Product.Name);
+            cbbOrderPrd.ValueMember = nameof(Product.Id);
+        }
+
+        private void FillOrderCustomerCbb()
+        {
+            var customersForOrderDetail = context.Customers.AsNoTracking().ToList();
+            cbbCstId.DataSource = customersForOrderDetail;
+            cbbCstId.DisplayMember = nameof(Customer.CustomerName);
+            cbbCstId.ValueMember = nameof(Customer.Id);
+            
         }
     }
 }

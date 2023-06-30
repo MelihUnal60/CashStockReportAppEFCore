@@ -8,5 +8,6 @@ namespace CashStockReportApp.App
 {
     public interface ICustomerAddressService
     {
+        void Create(string address, string city, string region, int adressOfCustomerId);
     }
 }

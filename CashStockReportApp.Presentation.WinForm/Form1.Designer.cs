@@ -380,7 +380,7 @@
             // 
             // btnComplateOrder
             // 
-            btnComplateOrder.Location = new Point(923, 207);
+            btnComplateOrder.Location = new Point(942, 207);
             btnComplateOrder.Name = "btnComplateOrder";
             btnComplateOrder.Size = new Size(260, 29);
             btnComplateOrder.TabIndex = 37;
@@ -493,9 +493,9 @@
             // 
             // txtCstAdress
             // 
-            txtCstAdress.Location = new Point(1113, 26);
+            txtCstAdress.Location = new Point(1113, 23);
             txtCstAdress.Name = "txtCstAdress";
-            txtCstAdress.Size = new Size(151, 27);
+            txtCstAdress.Size = new Size(221, 27);
             txtCstAdress.TabIndex = 50;
             // 
             // txtCstRegion
