@@ -25,6 +25,8 @@ namespace CashStockReportApp.App
             customerAddress.City = city;
             customerAddress.Region = region;
             customerAddress.AdressOfCustomerId = adressOfCustomerId;
+
+            _customerAddressRepository.Add(customerAddress);
         }
     }
 }

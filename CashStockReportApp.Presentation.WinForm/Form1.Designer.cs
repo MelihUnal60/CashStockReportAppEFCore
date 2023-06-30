@@ -84,6 +84,20 @@
             label23 = new Label();
             label24 = new Label();
             label25 = new Label();
+            cbbInvOrdId = new ComboBox();
+            cbbInvCustomer = new ComboBox();
+            cbbInvCashier = new ComboBox();
+            txtInvAmt = new TextBox();
+            Müşteri = new Label();
+            label27 = new Label();
+            label28 = new Label();
+            label29 = new Label();
+            btnInvoice = new Button();
+            button2 = new Button();
+            button3 = new Button();
+            button4 = new Button();
+            button5 = new Button();
+            button6 = new Button();
             ((System.ComponentModel.ISupportInitialize)grdPrd).BeginInit();
             ((System.ComponentModel.ISupportInitialize)grdOrders).BeginInit();
             ((System.ComponentModel.ISupportInitialize)grdInvoices).BeginInit();
@@ -314,14 +328,14 @@
             // 
             // txtOrderAmt
             // 
-            txtOrderAmt.Location = new Point(859, 118);
+            txtOrderAmt.Location = new Point(857, 91);
             txtOrderAmt.Name = "txtOrderAmt";
             txtOrderAmt.Size = new Size(149, 27);
             txtOrderAmt.TabIndex = 29;
             // 
             // txtOrderUnitPrc
             // 
-            txtOrderUnitPrc.Location = new Point(861, 167);
+            txtOrderUnitPrc.Location = new Point(857, 128);
             txtOrderUnitPrc.Name = "txtOrderUnitPrc";
             txtOrderUnitPrc.Size = new Size(149, 27);
             txtOrderUnitPrc.TabIndex = 30;
@@ -329,7 +343,7 @@
             // label14
             // 
             label14.AutoSize = true;
-            label14.Location = new Point(800, 29);
+            label14.Location = new Point(798, 17);
             label14.Name = "label14";
             label14.Size = new Size(53, 20);
             label14.TabIndex = 31;
@@ -338,7 +352,7 @@
             // label15
             // 
             label15.AutoSize = true;
-            label15.Location = new Point(800, 75);
+            label15.Location = new Point(811, 56);
             label15.Name = "label15";
             label15.Size = new Size(40, 20);
             label15.TabIndex = 32;
@@ -347,7 +361,7 @@
             // label16
             // 
             label16.AutoSize = true;
-            label16.Location = new Point(794, 170);
+            label16.Location = new Point(794, 131);
             label16.Name = "label16";
             label16.Size = new Size(57, 20);
             label16.TabIndex = 33;
@@ -356,7 +370,7 @@
             // label17
             // 
             label17.AutoSize = true;
-            label17.Location = new Point(800, 121);
+            label17.Location = new Point(800, 98);
             label17.Name = "label17";
             label17.Size = new Size(51, 20);
             label17.TabIndex = 34;
@@ -365,7 +379,7 @@
             // cbbOrderId
             // 
             cbbOrderId.FormattingEnabled = true;
-            cbbOrderId.Location = new Point(859, 22);
+            cbbOrderId.Location = new Point(857, 14);
             cbbOrderId.Name = "cbbOrderId";
             cbbOrderId.Size = new Size(151, 28);
             cbbOrderId.TabIndex = 35;
@@ -373,19 +387,20 @@
             // cbbOrderPrd
             // 
             cbbOrderPrd.FormattingEnabled = true;
-            cbbOrderPrd.Location = new Point(859, 75);
+            cbbOrderPrd.Location = new Point(857, 53);
             cbbOrderPrd.Name = "cbbOrderPrd";
             cbbOrderPrd.Size = new Size(151, 28);
             cbbOrderPrd.TabIndex = 36;
             // 
             // btnComplateOrder
             // 
-            btnComplateOrder.Location = new Point(942, 207);
+            btnComplateOrder.Location = new Point(914, 165);
             btnComplateOrder.Name = "btnComplateOrder";
             btnComplateOrder.Size = new Size(260, 29);
             btnComplateOrder.TabIndex = 37;
             btnComplateOrder.Text = "Siparişi Tamamla";
             btnComplateOrder.UseVisualStyleBackColor = true;
+            btnComplateOrder.Click += btnComplateOrder_Click;
             // 
             // txtCustomerPhone
             // 
@@ -438,31 +453,31 @@
             // grdPrd
             // 
             grdPrd.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            grdPrd.Location = new Point(12, 330);
+            grdPrd.Location = new Point(12, 390);
             grdPrd.Name = "grdPrd";
             grdPrd.RowHeadersWidth = 51;
             grdPrd.RowTemplate.Height = 29;
-            grdPrd.Size = new Size(247, 423);
+            grdPrd.Size = new Size(247, 363);
             grdPrd.TabIndex = 44;
             // 
             // grdOrders
             // 
             grdOrders.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            grdOrders.Location = new Point(324, 330);
+            grdOrders.Location = new Point(324, 390);
             grdOrders.Name = "grdOrders";
             grdOrders.RowHeadersWidth = 51;
             grdOrders.RowTemplate.Height = 29;
-            grdOrders.Size = new Size(550, 423);
+            grdOrders.Size = new Size(550, 363);
             grdOrders.TabIndex = 45;
             // 
             // grdInvoices
             // 
             grdInvoices.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            grdInvoices.Location = new Point(923, 330);
+            grdInvoices.Location = new Point(923, 390);
             grdInvoices.Name = "grdInvoices";
             grdInvoices.RowHeadersWidth = 51;
             grdInvoices.RowTemplate.Height = 29;
-            grdInvoices.Size = new Size(411, 423);
+            grdInvoices.Size = new Size(411, 363);
             grdInvoices.TabIndex = 46;
             // 
             // txtNewCtg
@@ -493,21 +508,21 @@
             // 
             // txtCstAdress
             // 
-            txtCstAdress.Location = new Point(1113, 23);
+            txtCstAdress.Location = new Point(1077, 15);
             txtCstAdress.Name = "txtCstAdress";
             txtCstAdress.Size = new Size(221, 27);
             txtCstAdress.TabIndex = 50;
             // 
             // txtCstRegion
             // 
-            txtCstRegion.Location = new Point(1113, 114);
+            txtCstRegion.Location = new Point(1077, 87);
             txtCstRegion.Name = "txtCstRegion";
             txtCstRegion.Size = new Size(151, 27);
             txtCstRegion.TabIndex = 51;
             // 
             // txtCstCity
             // 
-            txtCstCity.Location = new Point(1113, 76);
+            txtCstCity.Location = new Point(1077, 53);
             txtCstCity.Name = "txtCstCity";
             txtCstCity.Size = new Size(151, 27);
             txtCstCity.TabIndex = 52;
@@ -515,7 +530,7 @@
             // cbbCstId
             // 
             cbbCstId.FormattingEnabled = true;
-            cbbCstId.Location = new Point(1113, 162);
+            cbbCstId.Location = new Point(1077, 123);
             cbbCstId.Name = "cbbCstId";
             cbbCstId.Size = new Size(151, 28);
             cbbCstId.TabIndex = 53;
@@ -523,7 +538,7 @@
             // label22
             // 
             label22.AutoSize = true;
-            label22.Location = new Point(1049, 27);
+            label22.Location = new Point(1024, 19);
             label22.Name = "label22";
             label22.Size = new Size(47, 20);
             label22.TabIndex = 54;
@@ -532,7 +547,7 @@
             // label23
             // 
             label23.AutoSize = true;
-            label23.Location = new Point(1049, 78);
+            label23.Location = new Point(1029, 53);
             label23.Name = "label23";
             label23.Size = new Size(42, 20);
             label23.TabIndex = 55;
@@ -541,7 +556,7 @@
             // label24
             // 
             label24.AutoSize = true;
-            label24.Location = new Point(1049, 117);
+            label24.Location = new Point(1033, 88);
             label24.Name = "label24";
             label24.Size = new Size(38, 20);
             label24.TabIndex = 56;
@@ -550,17 +565,153 @@
             // label25
             // 
             label25.AutoSize = true;
-            label25.Location = new Point(1049, 165);
+            label25.Location = new Point(1013, 126);
             label25.Name = "label25";
             label25.Size = new Size(58, 20);
             label25.TabIndex = 57;
             label25.Text = "Müşteri";
+            // 
+            // cbbInvOrdId
+            // 
+            cbbInvOrdId.FormattingEnabled = true;
+            cbbInvOrdId.Location = new Point(1147, 238);
+            cbbInvOrdId.Name = "cbbInvOrdId";
+            cbbInvOrdId.Size = new Size(151, 28);
+            cbbInvOrdId.TabIndex = 58;
+            // 
+            // cbbInvCustomer
+            // 
+            cbbInvCustomer.FormattingEnabled = true;
+            cbbInvCustomer.Location = new Point(966, 289);
+            cbbInvCustomer.Name = "cbbInvCustomer";
+            cbbInvCustomer.Size = new Size(151, 28);
+            cbbInvCustomer.TabIndex = 59;
+            // 
+            // cbbInvCashier
+            // 
+            cbbInvCashier.FormattingEnabled = true;
+            cbbInvCashier.Location = new Point(1147, 289);
+            cbbInvCashier.Name = "cbbInvCashier";
+            cbbInvCashier.Size = new Size(151, 28);
+            cbbInvCashier.TabIndex = 60;
+            // 
+            // txtInvAmt
+            // 
+            txtInvAmt.Location = new Point(966, 237);
+            txtInvAmt.Name = "txtInvAmt";
+            txtInvAmt.Size = new Size(151, 27);
+            txtInvAmt.TabIndex = 61;
+            // 
+            // Müşteri
+            // 
+            Müşteri.AutoSize = true;
+            Müşteri.Location = new Point(1013, 267);
+            Müşteri.Name = "Müşteri";
+            Müşteri.Size = new Size(58, 20);
+            Müşteri.TabIndex = 62;
+            Müşteri.Text = "Müşteri";
+            // 
+            // label27
+            // 
+            label27.AutoSize = true;
+            label27.Location = new Point(1185, 266);
+            label27.Name = "label27";
+            label27.Size = new Size(56, 20);
+            label27.TabIndex = 63;
+            label27.Text = "Kasiyer";
+            // 
+            // label28
+            // 
+            label28.AutoSize = true;
+            label28.Location = new Point(994, 214);
+            label28.Name = "label28";
+            label28.Size = new Size(91, 20);
+            label28.TabIndex = 64;
+            label28.Text = "Fatura Tutarı";
+            // 
+            // label29
+            // 
+            label29.AutoSize = true;
+            label29.Location = new Point(1185, 215);
+            label29.Name = "label29";
+            label29.Size = new Size(77, 20);
+            label29.TabIndex = 65;
+            label29.Text = "Sipariş No";
+            // 
+            // btnInvoice
+            // 
+            btnInvoice.Location = new Point(838, 244);
+            btnInvoice.Name = "btnInvoice";
+            btnInvoice.Size = new Size(94, 73);
+            btnInvoice.TabIndex = 66;
+            btnInvoice.Text = "Fatura Oluştur";
+            btnInvoice.UseVisualStyleBackColor = true;
+            btnInvoice.Click += btnInvoice_Click;
+            // 
+            // button2
+            // 
+            button2.Location = new Point(324, 344);
+            button2.Name = "button2";
+            button2.Size = new Size(155, 29);
+            button2.TabIndex = 67;
+            button2.Text = "Kasiyerler";
+            button2.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            button3.Location = new Point(512, 344);
+            button3.Name = "button3";
+            button3.Size = new Size(156, 29);
+            button3.TabIndex = 68;
+            button3.Text = "Müşteriler";
+            button3.UseVisualStyleBackColor = true;
+            // 
+            // button4
+            // 
+            button4.Location = new Point(706, 344);
+            button4.Name = "button4";
+            button4.Size = new Size(168, 29);
+            button4.TabIndex = 69;
+            button4.Text = "Siparişler";
+            button4.UseVisualStyleBackColor = true;
+            // 
+            // button5
+            // 
+            button5.Location = new Point(923, 347);
+            button5.Name = "button5";
+            button5.Size = new Size(194, 29);
+            button5.TabIndex = 70;
+            button5.Text = "Faturalar";
+            button5.UseVisualStyleBackColor = true;
+            // 
+            // button6
+            // 
+            button6.Location = new Point(1135, 347);
+            button6.Name = "button6";
+            button6.Size = new Size(199, 29);
+            button6.TabIndex = 71;
+            button6.Text = "Sipariş Detayları";
+            button6.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1369, 765);
+            Controls.Add(button6);
+            Controls.Add(button5);
+            Controls.Add(button4);
+            Controls.Add(button3);
+            Controls.Add(button2);
+            Controls.Add(btnInvoice);
+            Controls.Add(label29);
+            Controls.Add(label28);
+            Controls.Add(label27);
+            Controls.Add(Müşteri);
+            Controls.Add(txtInvAmt);
+            Controls.Add(cbbInvCashier);
+            Controls.Add(cbbInvCustomer);
+            Controls.Add(cbbInvOrdId);
             Controls.Add(label25);
             Controls.Add(label24);
             Controls.Add(label23);
@@ -685,5 +836,19 @@
         private Label label23;
         private Label label24;
         private Label label25;
+        private ComboBox cbbInvOrdId;
+        private ComboBox cbbInvCustomer;
+        private ComboBox cbbInvCashier;
+        private TextBox txtInvAmt;
+        private Label Müşteri;
+        private Label label27;
+        private Label label28;
+        private Label label29;
+        private Button btnInvoice;
+        private Button button2;
+        private Button button3;
+        private Button button4;
+        private Button button5;
+        private Button button6;
     }
 }

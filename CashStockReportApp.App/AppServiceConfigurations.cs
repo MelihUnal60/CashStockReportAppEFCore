@@ -29,7 +29,6 @@ namespace CashStockReportApp.App
             IOCContainer.Register<IInvoiceService>(() => new InvoiceService());
             IOCContainer.Register<IRepository<Log>>(() => new EFCoreRepository<Log>());
             IOCContainer.Register<ILogService>(() => new LogService());
-            IOCContainer.Register<IOrderDetailService>(() =>  new OrderDetailService());
             IOCContainer.Register<IRepository<CustomerAddress>>(() => new EFCoreRepository<CustomerAddress>());
             IOCContainer.Register<ICustomerAddressService>(() => new CustomerAddressService());
 

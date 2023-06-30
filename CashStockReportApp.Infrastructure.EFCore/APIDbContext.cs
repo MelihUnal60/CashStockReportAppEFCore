@@ -68,9 +68,8 @@ namespace CashStockReportApp.Infrastructure.EFCore
             modelBuilder.Entity<OrderDetail>()
                 .HasOne(od => od.Product)
                 .WithMany(p => p.OrderDetails)
-                .HasForeignKey(od => od.ProductId)
                 .OnDelete(DeleteBehavior.ClientNoAction)
-                .HasForeignKey("FK_Order_Details_Products"); 
+                .HasConstraintName("FK_Order_Details_Products_FK_Order_Details_Products"); 
             #endregion
         }
 

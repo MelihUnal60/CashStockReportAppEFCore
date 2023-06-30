@@ -19,6 +19,8 @@ namespace CashStockReportApp.Presentation.WinForm
         ICashierService cashierService = IOCContainer.Resolve<ICashierService>();
         ICustomerService customerService = IOCContainer.Resolve<ICustomerService>();
         IOrderService orderService = IOCContainer.Resolve<IOrderService>();
+        ICustomerAddressService customerAddressService = IOCContainer.Resolve<ICustomerAddressService>();
+        IInvoiceService invoiceService = IOCContainer.Resolve<IInvoiceService>();
 
         APIDbContext context = new APIDbContext();
 
@@ -29,6 +31,9 @@ namespace CashStockReportApp.Presentation.WinForm
             FillOrderNumCbb();
             FillOrderPrdCbb();
             FillOrderCustomerCbb();
+            FillInvOrdIdCbb();
+            FillInvCustomerCbb();
+            FillInvCashierCbb();
         }
 
         private void GetProductData()
@@ -114,7 +119,66 @@ namespace CashStockReportApp.Presentation.WinForm
             cbbCstId.DataSource = customersForOrderDetail;
             cbbCstId.DisplayMember = nameof(Customer.CustomerName);
             cbbCstId.ValueMember = nameof(Customer.Id);
+
+        }
+
+        private void FillInvOrdIdCbb()
+        {
+            var ordersOfInvoices = context.Orders.AsNoTracking().ToList();
+            cbbInvOrdId.DataSource = ordersOfInvoices;
+            cbbInvOrdId.DisplayMember = nameof(Order.Id);
+            cbbInvOrdId.ValueMember = nameof(Order.Id);
+        }
+
+        private void FillInvCustomerCbb()
+        {
+            var customersForInvoices = context.Customers.AsNoTracking().ToList();
+            cbbInvCustomer.DataSource = customersForInvoices;
+            cbbInvCustomer.DisplayMember = nameof(Customer.CustomerName);
+            cbbInvCustomer.ValueMember = nameof(Customer.Id);
+        }
+
+        private void FillInvCashierCbb()
+        {
+            var cashiersForInvoices = context.Cashiers.AsNoTracking().ToList();
+            cbbInvCashier.DataSource = cashiersForInvoices;
+            cbbInvCashier.DisplayMember = nameof(Cashier.CashierName);
+            cbbInvCashier.ValueMember = nameof(Cashier.Id);
+        }
+
+        private void btnComplateOrder_Click(object sender, EventArgs e)
+        {
+            int orderId = Convert.ToInt32(cbbOrderId.SelectedValue);
+            int productId = Convert.ToInt32(cbbOrderPrd.SelectedValue);
+            decimal unitPrice = Convert.ToDecimal(txtOrderUnitPrc.Text);
+            short quantity = Convert.ToSByte(txtOrderAmt.Text);
+            int cusId = Convert.ToInt32(cbbCstId.SelectedValue);
+
+
+            OrderDetail orderDetail = new OrderDetail();
+
+            orderDetail.OrderId = orderId;
+            orderDetail.ProductId = productId;
+            orderDetail.PricePerUnit = unitPrice;
+            orderDetail.Qty = quantity;
+
+            context.OrdersDetail.Add(orderDetail);
+
+            customerAddressService.Create(txtCstAdress.Text, txtCstCity.Text, txtCstRegion.Text, cusId);
+            context.SaveChanges();
+        }
+
+        private void btnInvoice_Click(object sender, EventArgs e)
+        {
+            int customerId = Convert.ToInt32(cbbInvCustomer.SelectedValue);
+            int orderId = Convert.ToInt32(cbbInvOrdId.SelectedValue);
+            int cashierId = Convert.ToInt32(cbbInvCashier.SelectedValue);
+            decimal totalPrice = Convert.ToDecimal(txtInvAmt.Text);
+
             
+
+            invoiceService.Create(totalPrice, customerId, cashierId, orderId);
+            context.SaveChanges();
         }
     }
 }

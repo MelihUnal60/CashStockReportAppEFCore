@@ -4,6 +4,7 @@ using CashStockReportApp.Infrastructure.EFCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CashStockReportApp.Infrastructure.EFCore.Migrations
 {
     [DbContext(typeof(APIDbContext))]
-    partial class APIDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230630112646_Third")]
+    partial class Third
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -240,6 +243,9 @@ namespace CashStockReportApp.Infrastructure.EFCore.Migrations
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
 
+                    b.Property<int>("FK_Order_Details_Products")
+                        .HasColumnType("int");
+
                     b.Property<decimal>("PricePerUnit")
                         .HasColumnType("money");
 
@@ -250,7 +256,7 @@ namespace CashStockReportApp.Infrastructure.EFCore.Migrations
 
                     b.HasKey("OrderId", "ProductId");
 
-                    b.HasIndex("ProductId");
+                    b.HasIndex("FK_Order_Details_Products");
 
                     b.ToTable("Order_Details", (string)null);
                 });
@@ -316,19 +322,18 @@ namespace CashStockReportApp.Infrastructure.EFCore.Migrations
 
             modelBuilder.Entity("CashStockReportApp.Domain.Entities.OrderDetail", b =>
                 {
+                    b.HasOne("CashStockReportApp.Domain.Entities.Product", "Product")
+                        .WithMany("OrderDetails")
+                        .HasForeignKey("FK_Order_Details_Products")
+                        .OnDelete(DeleteBehavior.ClientNoAction)
+                        .IsRequired();
+
                     b.HasOne("CashStockReportApp.Domain.Entities.Order", "Order")
                         .WithMany("OrderDetails")
                         .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.ClientNoAction)
                         .IsRequired()
                         .HasConstraintName("FK_Order_Details_Orders");
-
-                    b.HasOne("CashStockReportApp.Domain.Entities.Product", "Product")
-                        .WithMany("OrderDetails")
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.ClientNoAction)
-                        .IsRequired()
-                        .HasConstraintName("FK_Order_Details_Products_FK_Order_Details_Products");
 
                     b.Navigation("Order");
 

@@ -8,5 +8,6 @@ namespace CashStockReportApp.App
 {
     public interface IInvoiceService
     {
+        void Create(decimal invAmt, int cusId, int cshId, int invOrdId);
     }
 }

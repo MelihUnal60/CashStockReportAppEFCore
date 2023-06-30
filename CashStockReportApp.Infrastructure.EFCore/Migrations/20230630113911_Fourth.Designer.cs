@@ -4,6 +4,7 @@ using CashStockReportApp.Infrastructure.EFCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CashStockReportApp.Infrastructure.EFCore.Migrations
 {
     [DbContext(typeof(APIDbContext))]
-    partial class APIDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230630113911_Fourth")]
+    partial class Fourth
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -328,7 +331,7 @@ namespace CashStockReportApp.Infrastructure.EFCore.Migrations
                         .HasForeignKey("ProductId")
                         .OnDelete(DeleteBehavior.ClientNoAction)
                         .IsRequired()
-                        .HasConstraintName("FK_Order_Details_Products_FK_Order_Details_Products");
+                        .HasConstraintName("FK_Order_Details_Products");
 
                     b.Navigation("Order");
 
