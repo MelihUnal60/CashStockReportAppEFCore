@@ -71,7 +71,7 @@
             label19 = new Label();
             label20 = new Label();
             grdPrd = new DataGridView();
-            grdOrders = new DataGridView();
+            grdInfoList = new DataGridView();
             grdInvoices = new DataGridView();
             txtNewCtg = new TextBox();
             label21 = new Label();
@@ -94,12 +94,12 @@
             label29 = new Label();
             btnInvoice = new Button();
             button2 = new Button();
-            button3 = new Button();
-            button4 = new Button();
+            btnShowCustomers = new Button();
+            btnOrderList = new Button();
             button5 = new Button();
             button6 = new Button();
             ((System.ComponentModel.ISupportInitialize)grdPrd).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)grdOrders).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)grdInfoList).BeginInit();
             ((System.ComponentModel.ISupportInitialize)grdInvoices).BeginInit();
             SuspendLayout();
             // 
@@ -460,15 +460,15 @@
             grdPrd.Size = new Size(247, 363);
             grdPrd.TabIndex = 44;
             // 
-            // grdOrders
+            // grdInfoList
             // 
-            grdOrders.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            grdOrders.Location = new Point(324, 390);
-            grdOrders.Name = "grdOrders";
-            grdOrders.RowHeadersWidth = 51;
-            grdOrders.RowTemplate.Height = 29;
-            grdOrders.Size = new Size(550, 363);
-            grdOrders.TabIndex = 45;
+            grdInfoList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            grdInfoList.Location = new Point(324, 390);
+            grdInfoList.Name = "grdInfoList";
+            grdInfoList.RowHeadersWidth = 51;
+            grdInfoList.RowTemplate.Height = 29;
+            grdInfoList.Size = new Size(550, 363);
+            grdInfoList.TabIndex = 45;
             // 
             // grdInvoices
             // 
@@ -656,24 +656,27 @@
             button2.TabIndex = 67;
             button2.Text = "Kasiyerler";
             button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
             // 
-            // button3
+            // btnShowCustomers
             // 
-            button3.Location = new Point(512, 344);
-            button3.Name = "button3";
-            button3.Size = new Size(156, 29);
-            button3.TabIndex = 68;
-            button3.Text = "Müşteriler";
-            button3.UseVisualStyleBackColor = true;
+            btnShowCustomers.Location = new Point(512, 344);
+            btnShowCustomers.Name = "btnShowCustomers";
+            btnShowCustomers.Size = new Size(156, 29);
+            btnShowCustomers.TabIndex = 68;
+            btnShowCustomers.Text = "Müşteriler";
+            btnShowCustomers.UseVisualStyleBackColor = true;
+            btnShowCustomers.Click += btnShowCustomers_Click;
             // 
-            // button4
+            // btnOrderList
             // 
-            button4.Location = new Point(706, 344);
-            button4.Name = "button4";
-            button4.Size = new Size(168, 29);
-            button4.TabIndex = 69;
-            button4.Text = "Siparişler";
-            button4.UseVisualStyleBackColor = true;
+            btnOrderList.Location = new Point(706, 344);
+            btnOrderList.Name = "btnOrderList";
+            btnOrderList.Size = new Size(168, 29);
+            btnOrderList.TabIndex = 69;
+            btnOrderList.Text = "Siparişler";
+            btnOrderList.UseVisualStyleBackColor = true;
+            btnOrderList.Click += btnOrderList_Click;
             // 
             // button5
             // 
@@ -700,8 +703,8 @@
             ClientSize = new Size(1369, 765);
             Controls.Add(button6);
             Controls.Add(button5);
-            Controls.Add(button4);
-            Controls.Add(button3);
+            Controls.Add(btnOrderList);
+            Controls.Add(btnShowCustomers);
             Controls.Add(button2);
             Controls.Add(btnInvoice);
             Controls.Add(label29);
@@ -724,7 +727,7 @@
             Controls.Add(label21);
             Controls.Add(txtNewCtg);
             Controls.Add(grdInvoices);
-            Controls.Add(grdOrders);
+            Controls.Add(grdInfoList);
             Controls.Add(grdPrd);
             Controls.Add(label20);
             Controls.Add(label19);
@@ -772,7 +775,7 @@
             Text = "Form1";
             Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)grdPrd).EndInit();
-            ((System.ComponentModel.ISupportInitialize)grdOrders).EndInit();
+            ((System.ComponentModel.ISupportInitialize)grdInfoList).EndInit();
             ((System.ComponentModel.ISupportInitialize)grdInvoices).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -823,7 +826,7 @@
         private Label label19;
         private Label label20;
         private DataGridView grdPrd;
-        private DataGridView grdOrders;
+        private DataGridView grdInfoList;
         private DataGridView grdInvoices;
         private TextBox txtNewCtg;
         private Label label21;
@@ -846,8 +849,8 @@
         private Label label29;
         private Button btnInvoice;
         private Button button2;
-        private Button button3;
-        private Button button4;
+        private Button btnShowCustomers;
+        private Button btnOrderList;
         private Button button5;
         private Button button6;
     }

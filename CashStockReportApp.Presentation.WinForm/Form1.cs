@@ -53,6 +53,47 @@ namespace CashStockReportApp.Presentation.WinForm
             context.SaveChanges();
         }
 
+        private void GetCashierList()
+        {
+            var cashiers = from c in context.Cashiers.AsNoTracking().Include(c => c.Invoices)
+                           select new CashierListVM
+                           {
+                               KasiyerAdi = c.CashierName,
+                               KasiyerSoyadi = c.CashierSurname,
+                               IsBasiTarihi = Convert.ToDateTime(c.HireDate),
+                               FaturaAdedi = c.Invoices.Count
+                           };
+            grdInfoList.DataSource = cashiers.ToList();
+            context.SaveChanges();
+        }
+
+        private void GetCustomerList()
+        {
+            var customers = from c in context.Customers.AsNoTracking().Include(c => c.Address)
+                            select new CustomerListVM
+                            {
+                                MusteriAdi = c.CustomerName,
+                                MusteriSoyadi = c.CustomerSurname,
+                                MusteriAdresi = c.Address.Address,
+                                MusteriTel = c.CustomerPhone
+                            };
+            grdInfoList.DataSource = customers.ToList();
+            context.SaveChanges();
+        }
+
+        private void GetOrderList()
+        {
+            var orders = from o in context.Orders.AsNoTracking().Include(o => o.OrderInvoice)
+                         select new OrderListVM
+                         {
+                             SiparisNo = o.Id,
+                             SiparisTarihi = o.OrderDate,
+                             ToplamTutar = o.TotalPrice,
+                         };
+            grdInfoList.DataSource = orders.ToList();
+            context.SaveChanges();
+        }
+
         private void btnAddCtg_Click(object sender, EventArgs e)
         {
             categoryService.Create(txtNewCtg.Text);
@@ -80,6 +121,8 @@ namespace CashStockReportApp.Presentation.WinForm
             txtPrdAmt.Text = "";
             txtPrdName.Text = "";
             txtPrdPrice.Text = "";
+            FillOrderPrdCbb();
+
         }
 
         private void btnAddCashier_Click(object sender, EventArgs e)
@@ -87,7 +130,11 @@ namespace CashStockReportApp.Presentation.WinForm
             cashierService.Create(txtCashierName.Text, txtCashierSurname.Text,
                 txtCashierGender.Text, Convert.ToDateTime(txtCashierHDate.Text));
             context.SaveChanges();
-
+            FillInvCashierCbb();
+            txtCashierGender.Text = "";
+            txtCashierHDate.Text = "";
+            txtCashierName.Text = "";
+            txtCashierSurname.Text = "";
         }
 
         private void button1_Click(object sender, EventArgs e) //Sipariþ ve müþteri tanýmlama
@@ -95,6 +142,10 @@ namespace CashStockReportApp.Presentation.WinForm
             orderService.Create(Convert.ToDecimal(txtOrdTotalPrice.Text), txtOrdShip.Text, txtOrdCity.Text);
             customerService.Create(txtCustomerName.Text, txtCustomerSurname.Text, txtCustomerPhone.Text);
             context.SaveChanges();
+            FillInvCustomerCbb();
+            FillInvOrdIdCbb();
+            FillOrderCustomerCbb();
+            FillOrderNumCbb();
         }
 
         private void FillOrderNumCbb()
@@ -166,6 +217,11 @@ namespace CashStockReportApp.Presentation.WinForm
 
             customerAddressService.Create(txtCstAdress.Text, txtCstCity.Text, txtCstRegion.Text, cusId);
             context.SaveChanges();
+            txtOrdCity.Text = "";
+            txtOrderAmt.Text = "";
+            txtOrderUnitPrc.Text = "";
+            txtOrdShip.Text = "";
+            txtOrdTotalPrice.Text = "";
         }
 
         private void btnInvoice_Click(object sender, EventArgs e)
@@ -175,10 +231,25 @@ namespace CashStockReportApp.Presentation.WinForm
             int cashierId = Convert.ToInt32(cbbInvCashier.SelectedValue);
             decimal totalPrice = Convert.ToDecimal(txtInvAmt.Text);
 
-            
+
 
             invoiceService.Create(totalPrice, customerId, cashierId, orderId);
             context.SaveChanges();
+        }
+
+        private void button2_Click(object sender, EventArgs e) //kasiyer listesi
+        {
+            GetCashierList();
+        }
+
+        private void btnShowCustomers_Click(object sender, EventArgs e)
+        {
+            GetCustomerList();
+        }
+
+        private void btnOrderList_Click(object sender, EventArgs e)
+        {
+            GetOrderList();
         }
     }
 }
